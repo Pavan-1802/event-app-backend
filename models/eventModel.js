@@ -22,6 +22,10 @@ const eventSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  poster:{
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -59,7 +63,7 @@ const eventSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
-    enum: ['Conference', 'Workshop', 'Meetup', 'Webinar', 'Other'], // Example event types
+    enum: ['Conference', 'Workshop', 'Meetup', 'Webinar', 'Other', 'Roadshow', 'Musical Concert', 'Tech Fest'], // Example event types
   },
   comments: [commentSchema],
   registeredUsers: [

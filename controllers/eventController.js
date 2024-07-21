@@ -11,11 +11,12 @@ export const getEvents = async (req, res) => {
 }
 
 export const createNewEvent = async (req, res) => {
-  const { title, description, location, date, time, tags, type } = req.body;
+  const { title, poster, description, location, date, time, tags, type } = req.body;
 
   try {
     const newEvent = new Event({
       title,
+      poster,
       description,
       location,
       organizer: req.user.id,
@@ -82,7 +83,7 @@ export const addCommentToEvent = async (req, res) => {
 
 export const editEvent = async (req, res) => {
   const { id } = req.params;
-  const { title, description, location, date, time, tags, type } = req.body;
+  const { title, poster, description, location, date, time, tags, type } = req.body;
 
   try {
     const event = await Event.findById(id);
@@ -96,6 +97,7 @@ export const editEvent = async (req, res) => {
     }
 
     event.title = title;
+    event.poster = poster;
     event.description = description;
     event.location = location;
     event.date = date;
